@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+
+from PyQt5.QtWidgets import QApplication ,  QWidget
+from qgis.core import QgsApplication
+from mapMenu import MainWindow
+
+def Map(app):
+
+    # set up QGIS
+    app.setPrefixPath("/usr", True)
+    app.initQgis()
+
+    # set the main window and show it
+    mw = MainWindow()
+    mw.show()
+    app.exec_()
+
+
+# "delete" our main window
+mw = None
+app =QgsApplication([],True)
+Map(app)
+app.exitQgis()
