@@ -88,7 +88,7 @@ class MainWindow(QMainWindow):
 
 
 
-#------------------------------Searching for plo2.txt and pol3.txt-----------
+#------------------------------Searching for plo2.txt and polshot.txt-----------
 
         pol2path = "/pol2.txt"
         filename = "file://"+curr_d+pol2path   
@@ -100,10 +100,10 @@ class MainWindow(QMainWindow):
 #        else:
 #             QMessageBox.about(self, "LAYER NOT LOADED", "Pol2 txt-delimited NOT loaded")
 
-        pol3path = "/pol3.txt"
+        pol3path = "/polshot.txt"
         filename = "file://"+curr_d+pol3path   
         uri=filename+"?delimiter=%s&crs=epsg:31983&LField=%s&SField=%s&xField=%s&yField=%s" % ("  ", "L", "S", "X", "Y")
-        layer = QgsVectorLayer(uri, "pol3", "delimitedtext")
+        layer = QgsVectorLayer(uri, "polshot", "delimitedtext")
 #        if layer.isValid():
         lay.append(layer)
 #             QMessageBox.about(self, "LAYER LOADED!", "Pol3 txt layer  loaded")
@@ -192,7 +192,7 @@ class MainWindow(QMainWindow):
         readAct3.setStatusTip('Read pol2 file')
         readAct4 = QAction(QIcon(":/icons/polygon.png"),'Shot Polygon', self)
         readAct4.setShortcut('Ctrl+q')
-        readAct4.setStatusTip('Read pol3 file')
+        readAct4.setStatusTip('Read polshot file')
         readAct11 = QAction(QIcon(":/icons/sail.png"),'Grid', self)
         readAct11.setShortcut('Ctrl+a')
         readAct11.setStatusTip('Read Grid file')
@@ -231,7 +231,7 @@ class MainWindow(QMainWindow):
         readAct8.setStatusTip('Read pol2 file')
         readAct9 = QAction(QIcon(":/icons/polygon.png"),'Shot Polygon', self)
         readAct9.setShortcut('Ctrl+m')
-        readAct9.setStatusTip('Read pol3 file')
+        readAct9.setStatusTip('Read polshot file')
 
         readAct12 = QAction(QIcon(":/icons/sail.png"),'Grid', self)
         readAct12.setShortcut('Ctrl+k')
@@ -516,8 +516,8 @@ class MainWindow(QMainWindow):
          QMessageBox.about(self, "LAYER LOADED!", "Pol2 shapefile NOT loaded")
          self.actShowPolNodeLayer.setChecked(False)
 
-     if (next((x for x in lay if x.name() == 'pol3'), None)):
-       layer=next((x for x in lay if x.name() == 'pol3'), None)
+     if (next((x for x in lay if x.name() == 'polshot'), None)):
+       layer=next((x for x in lay if x.name() == 'polshot'), None)
        if self.actShowPolShotLayer.isChecked():
         isymbol = QgsMarkerSymbol.createSimple({'color' : "128,128,255",
                   'size' : "2.5", 'name' : "square" })
@@ -526,7 +526,7 @@ class MainWindow(QMainWindow):
         lay1.append(layer)
      else:
        if self.actShowPolShotLayer.isChecked():
-         QMessageBox.about(self, "LAYER LOADED!", "Pol3 shapefile NOT loaded")
+         QMessageBox.about(self, "LAYER LOADED!", "Polshot shapefile NOT loaded")
          self.actShowPolShotLayer.setChecked(False)
 
      # Rasters
